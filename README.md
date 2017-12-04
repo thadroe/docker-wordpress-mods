@@ -32,11 +32,11 @@ http://mytestsite.local:8000 for phpmyadmin
 
 Accept the cert exception if using SSL/https
 
-4. For wp-cli, you can run it with (changing 'user' for your own):
+4. For wp-cli, you can run it with:
 
 `docker-compose exec --user www-data wordpress wp`
 
-To make that easier, you can create an alias in your ~/.bashrc file to something like, again replacing 'user' with your own):
+To make that easier, you can create an alias in your ~/.bashrc file to something like:
 
 ~~~~
 alias dcwp='docker-compose exec --user www-data wordpress wp'
@@ -44,7 +44,7 @@ alias dcwp='docker-compose exec --user www-data wordpress wp'
 
 Then use 'dcwp' instead of 'wp'
 
-You can run any wp-cli commands except for 'db' operations, but 'search-replace' still works.
+You can run any wp-cli commands except for 'db'.
 
 ---
 
