@@ -1,0 +1,37 @@
+version: '3'
+services:
+  wordpress:
+    depends_on:
+      - mariadb
+    image: custom-wordpress-apache-php7.1:wp-4.9.1
+    restart: always
+    volumes:
+      - ./public:/var/www/html
+    environment:
+      WORDPRESS_DB_NAME: wordpress
+      WORDPRESS_DB_PASSWORD: root
+      VIRTUAL_HOST: mytestsite.local,www.mytestsite.local
+    ports:
+      - 80:80
+      - 443:443
+    links:
+      - mariadb:mysql
+  mariadb:
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - ./mariadb_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - 3307:3306
+  phpmyadmin:
+    depends_on:
+      - mariadb
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - 8000:80
+    environment:
+      PMA_HOST: mariadb
+      MYSQL_ROOT_PASSWORD: root
