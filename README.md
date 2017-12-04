@@ -7,21 +7,9 @@ Some modifications from the official Wordpress docker repo to suit my own needs 
 - Includes wp-cli
 - Support for SSL via self-signed cert
 
-#### To build a local image of this for yourself
-
-1. In the buildfiles directories of PHP and WP version you'd like to use, run the build per the example below. Make sure docker-entrypoint.sh is executable with `chmod u+x docker-entrypoint.sh`.
-
-Example build where name includes php version and tag contains wp version:
-
-`docker build -t="custom-wordpress-apache-php7.x:wp-4.x.x" .`
-
-Change the name and tag to suit your preferences.
-
-2. Check that the image exists with `docker image ls`
-
 #### To start a project with docker-compose
 
-1. Copy the corresponding **docker-compose.yml** file to your project directory and edit the following VIRTUAL_HOST line to whatever you'd like:
+1. In the 'php7.x-apache/docker-compose' directory copy the desired **docker-compose.yml** file to your project directory and edit the following VIRTUAL_HOST line to whatever you'd like:
 
 ~~~~
 VIRTUAL_HOST: mytestsite.local,www.mytestsite.local
@@ -61,3 +49,19 @@ You can run any wp-cli commands except for 'db' operations, but 'search-replace'
 ---
 
 **Note:** Only one docker-compose instance can be run at a time unless you change ports and adjust virtual hosts accordingly. See [https://github.com/jwilder/nginx-proxy](https://github.com/jwilder/nginx-proxy) if you'd like to explore some other possibilities of running multiple instances pumping through an nginx-proxy.
+
+---
+
+#### OPTIONAL - To build a local image of this for yourself
+
+1. In the buildfiles directories of PHP and WP version you'd like to use, run the build per the example below. Make sure docker-entrypoint.sh is executable with `chmod u+x docker-entrypoint.sh`.
+
+Example build where name includes php version and tag contains wp version:
+
+`docker build -t="custom-wordpress-apache-php7.x:wp-4.x.x" .`
+
+Change the name and tag to suit your preferences.
+
+2. Check that the image exists with `docker image ls`
+
+3. Change the wordpress image in your docker-compose.yml
