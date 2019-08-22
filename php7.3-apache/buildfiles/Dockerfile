@@ -53,7 +53,7 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 VOLUME /var/www/html
 
 ENV WORDPRESS_VERSION 5.2.2
-ENV WORDPRESS_SHA1 8137e24a2625c7f2eed92834cbc09edf84f39c7a
+ENV WORDPRESS_SHA1 3605bcbe9ea48d714efa59b0eb2d251657e7d5b0
 
 RUN set -ex; \
 	curl -o wordpress.tar.gz -fSL "https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz"; \
